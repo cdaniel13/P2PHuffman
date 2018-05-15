@@ -5,7 +5,7 @@
 
 typedef struct HuffmanArvore {
 	void* byteArvore;
-	size_t tipoDado;
+	//size_t tipoDado;
 	int frequencia;
 	struct HuffmanArvore* esquerda;
 	struct HuffmanArvore* direita;

@@ -3,18 +3,16 @@
 #include "HuffmanArvore.h"
 #include "filaPrioridade.h"
 
-HuffmanArvore* criarNo(void* byte, size_t tipoDado,int frequencia){
+HuffmanArvore* criarNo(void* byte,int frequencia){
 	HuffmanArvore* novoNo = (HuffmanArvore*) malloc(sizeof(HuffmanArvore));
 
-	novoNo->tipoDado = tipoDado;
-	novoNo->byteArvore = malloc(tipoDado);
+	novoNo->byteArvore = malloc(sizeof(Byte));
 	novoNo->frequencia = frequencia;
 
 	novoNo->esquerda = novoNo->direita = novoNo->proximo = NULL;
 
-	unsigned i;
-	for(i = 0; i < tipoDado; i++)
-		*(Byte*)(novoNo->byteArvore + i) = *(Byte*)(byte + i);
+
+	*(Byte*)novoNo->byteArvore = *(Byte*)byte;
 
 	return novoNo;
 
@@ -34,7 +32,7 @@ void construirFila(filaPrioridade* fila, int* frequencia){
 	int i;
 	for(i = 0; i < 256; i++)
 		if(frequencia[i])
-			enfileirar(fila, criarNo(&i, sizeof(Byte), frequencia[i]));
+			enfileirar(fila, criarNo(&i, frequencia[i]));
 
 
 }
@@ -77,7 +75,7 @@ HuffmanArvore* construirArvore(filaPrioridade* fila){
 	Byte byte = '*';
 
 	while(fila->cabeca->proximo != NULL){
-		novoNo = criarNo(&byte, sizeof(Byte), 0);
+		novoNo = criarNo(&byte, 0);
 
 		novoNo->esquerda = desenfileirar(fila);
 		novoNo->direita = desenfileirar(fila);

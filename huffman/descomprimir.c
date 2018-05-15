@@ -59,6 +59,10 @@ void descomprimir(){
     //passa o tamanho do lixo para intreiro
     tamLixo = tamanhoLixo;
 
+    tamanhoArvore |= ((tamanhoLixo & 0b00011111) << 8);
+
+
+
     HuffmanArvore* arvore = criarArvoreVazia();
     arvore = reconstruirArvore(arquivoComprimido, arvore);
 

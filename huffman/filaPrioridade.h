@@ -12,12 +12,12 @@ typedef struct filaPrioridade{
 /*
  * Cria um novo no da arvore de huffman
  *
- * Recebe um Byte
+ * Recebe um ponteiro void para o Byte
  * Recebe a frequencia do Byte
  *
  * Retorna o novo no
  */
-HuffmanArvore* criarNo(void* byte, size_t tipoDado,int frequencia);
+HuffmanArvore* criarNo(void* byte,int frequencia);
 
 
 /*
