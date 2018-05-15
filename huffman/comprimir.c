@@ -74,7 +74,6 @@ void comprimir(){
 	criarCabecalho(arquivoSaida, arvore, tamanhoArvore);
 	escreverArquivoCompactado(arquivoEntrada, arquivoSaida, matriz, *tamanhoArvore);
 
-
 	printf("Arquivo compactado!!\nPressione enter para continuar:");
 	getchar();
 

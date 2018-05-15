@@ -48,19 +48,16 @@ void descomprimir(){
 
     Byte tamanhoLixo, tamanhoArvore;
 
-    int tamLixo;
+    int tamLixo, tamArvore;
 
     fscanf(arquivoComprimido, "%c", &tamanhoLixo);
     fscanf(arquivoComprimido, "%c", &tamanhoArvore);
 
     //pega os 3 bits do tamanho do lixo
-    tamanhoLixo = (tamanhoLixo >> 5);
+    tamLixo = (tamanhoLixo >> 5);
 
-    //passa o tamanho do lixo para intreiro
-    tamLixo = tamanhoLixo;
-
-    tamanhoArvore |= ((tamanhoLixo & 0b00011111) << 8);
-
+    tamArvore = (tamanhoLixo & 0b00011111) << 8;
+    tamArvore |= tamanhoArvore;
 
 
     HuffmanArvore* arvore = criarArvoreVazia();
@@ -68,6 +65,7 @@ void descomprimir(){
 
     arquivoDescomprimido = fopen(nomeArquivoDescomprimido, "wb");
     descomprimirArquivo(arquivoComprimido, arquivoDescomprimido, arvore, tamLixo);
+
 
     fclose(arquivoComprimido);
     fclose(arquivoDescomprimido);

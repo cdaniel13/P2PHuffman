@@ -28,7 +28,7 @@ void escreverArquivoCompactado(FILE* arquivoEntrada, FILE* arquivoSaida, Byte ta
     Byte byte = 0, byteAuxiliar;
 
     short int bitIndex = 0;
-    int stringIndex;
+    int stringIndex = 0;
 
     fseek(arquivoEntrada, 0, SEEK_SET);
     while((fscanf(arquivoEntrada, "%c", &byteAuxiliar)) != EOF ){
@@ -57,7 +57,9 @@ void escreverArquivoCompactado(FILE* arquivoEntrada, FILE* arquivoSaida, Byte ta
 
 
     Byte tamanhoLixo = ((8 - bitIndex) << 5);
-    Byte tamanhoStringArvore = tamanhoArvore;
+
+    tamanhoLixo |= tamanhoArvore >> 8;
+    Byte tamanhoStringArvore = tamanhoArvore & 0b11111111;
 
     fseek(arquivoSaida, 0, SEEK_SET);
 
