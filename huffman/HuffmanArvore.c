@@ -81,7 +81,7 @@ HuffmanArvore* reconstruirArvore(FILE* arquivo, HuffmanArvore* arvore){
     fscanf(arquivo, "%c", &byte);
 
 
-    if(byte == '\*'){
+    if(byte == '*'){
 
         arvore = criarNo(&byte,0);
 
