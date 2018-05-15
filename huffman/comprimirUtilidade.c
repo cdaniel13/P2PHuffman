@@ -20,6 +20,7 @@ void criarCabecalho(FILE* arquivoSaida, HuffmanArvore* arvore, int *tamanhoArvor
     fprintf(arquivoSaida, "%c%C", byte, byte);
 
     escreverArvore(arvore, tamanhoArvore, arquivoSaida);
+
 }
 
 void escreverArquivoCompactado(FILE* arquivoEntrada, FILE* arquivoSaida, Byte tabelaCaminhos[][256], int tamanhoArvore){

@@ -66,13 +66,14 @@ void comprimir(){
 	iniciarTabelaCaminhos(matriz);
 	criarTabelaCaminhos(matriz, vetorTemp, arvore, 0);
 
-	int *tamanhoArvore = (int*) malloc(sizeof(int));
+	int *tamanhoArvore = (int*) calloc(1,sizeof(int));
 
 	arquivoSaida = fopen(nomeArquivoSaida, "wb");
 
 	//criando o cabecalho e resevando 2 bytes para o tamanho do lixo e da arvore...
 	criarCabecalho(arquivoSaida, arvore, tamanhoArvore);
 	escreverArquivoCompactado(arquivoEntrada, arquivoSaida, matriz, *tamanhoArvore);
+
 
 	printf("Arquivo compactado!!\nPressione enter para continuar:");
 	getchar();
